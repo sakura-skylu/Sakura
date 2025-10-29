@@ -1,0 +1,150 @@
+链表冒泡排序OOP实现 - 使用示例
+=====================================
+
+一、基本编译和运行
+-----------------
+1. 编译程序：
+   g++ -o 链表冒泡排序OOP 链表冒泡排序OOP.cpp -std=c++98
+
+2. 运行程序：
+   ./链表冒泡排序OOP
+
+3. 程序会自动演示以下功能：
+   - 基础链表操作和排序
+   - 文件读写操作
+   - 运算符重载使用
+   - 不同数据类型支持
+
+
+二、文件输入输出示例
+-------------------
+1. 创建输入文件 data.txt：
+   echo "64 34 25 12 22 11 90" > data.txt
+
+2. 在代码中使用：
+   LinkedList<int> list;
+   list.readFromFile("data.txt");
+   list.bubbleSort();
+   list.writeToFile("sorted.txt");
+
+3. 查看排序结果：
+   cat sorted.txt
+   # 输出: 11 12 22 25 34 64 90
+
+
+三、程序化使用示例
+-----------------
+// 示例1: 整数链表排序
+LinkedList<int> intList;
+intList.append(5);
+intList.append(2);
+intList.append(8);
+intList.append(1);
+intList.append(9);
+
+std::cout << "排序前: " << intList << std::endl;
+intList.bubbleSort();
+std::cout << "排序后: " << intList << std::endl;
+
+
+// 示例2: 浮点数链表排序
+LinkedList<double> doubleList;
+doubleList.append(3.14);
+doubleList.append(1.41);
+doubleList.append(2.71);
+
+doubleList.display();        // 显示: 3.14 1.41 2.71
+doubleList.bubbleSort();
+doubleList.display();        // 显示: 1.41 2.71 3.14
+
+
+// 示例3: 链表拷贝
+LinkedList<int> list1;
+list1.append(5);
+list1.append(3);
+list1.append(8);
+
+LinkedList<int> list2 = list1;  // 拷贝构造
+LinkedList<int> list3;
+list3 = list1;                   // 赋值运算符
+
+
+// 示例4: 检查链表状态
+if (list.isEmpty()) {
+    std::cout << "链表为空" << std::endl;
+}
+std::cout << "链表大小: " << list.getSize() << std::endl;
+
+
+// 示例5: 清空链表
+list.clear();
+std::cout << "清空后大小: " << list.getSize() << std::endl;
+
+
+四、支持的运算符
+---------------
+1. 比较运算符 (Node类):
+   - < > == != <= >=
+   - 用于冒泡排序中的节点比较
+
+2. 流运算符 (LinkedList类):
+   - << : 输出到流
+   - >> : 从流输入（未在main中演示，可扩展）
+
+3. 赋值运算符:
+   - = : 深拷贝赋值
+
+
+五、测试数据建议
+---------------
+1. 正序数据: 1 2 3 4 5
+2. 倒序数据: 5 4 3 2 1
+3. 随机数据: 64 34 25 12 22 11 90
+4. 重复数据: 3 1 4 1 5 9 2 6 5
+5. 单个元素: 42
+6. 大量数据: (生成100个随机数)
+
+
+六、性能说明
+-----------
+冒泡排序特点：
+- 时间复杂度: O(n²) 平均和最坏情况
+- 空间复杂度: O(1)
+- 稳定排序
+- 适合小规模数据
+
+对于大规模数据，建议考虑：
+- 快速排序: O(n log n)
+- 归并排序: O(n log n)
+- 堆排序: O(n log n)
+
+
+七、常见问题
+-----------
+Q1: 如何处理其他数据类型？
+A: 由于使用了模板，只需确保类型支持比较运算符即可。
+   例如: LinkedList<float>, LinkedList<long>, LinkedList<char>
+
+Q2: 如何修改排序为降序？
+A: 将bubbleSort()中的 > 改为 <，或者实现一个reverse()函数。
+
+Q3: 文件格式要求？
+A: 数据应该用空格、制表符或换行符分隔，程序会自动读取。
+
+Q4: 内存会泄漏吗？
+A: 不会。析构函数会自动释放所有节点内存。
+
+Q5: 可以排序字符串吗？
+A: 可以使用 LinkedList<std::string>，前提是包含 <string> 头文件。
+
+
+八、扩展建议
+-----------
+1. 添加头部插入功能
+2. 实现节点查找功能
+3. 添加节点删除功能
+4. 实现其他排序算法
+5. 添加反转链表功能
+6. 实现链表合并功能
+7. 支持JSON格式文件
+8. 添加性能计时功能
